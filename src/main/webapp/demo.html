@@ -10,7 +10,7 @@
 		#allmap {width:100%;height:500px;}
 	</style>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=9u6uekZRDNbxVQhS6kNESeLP"></script>
-	
+	<script type="text/javascript" src="jslib/jsUtil.js"></script>
 	<title>逆地址解析</title>
 </head>
 <body>
@@ -18,6 +18,8 @@
 	<p>点击地图展示详细地址</p>
 </body>
 </html>
+
+http://extocean.com/webchat
 
 <script type="text/javascript">
 	// 百度地图API功能
@@ -31,7 +33,7 @@
 		var pt = e.point;
 		geoc.getLocation(pt, function(rs){
 			var addComp = rs.addressComponents;
-			console.info(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+			log(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
 		});        
 	});
 </script>
