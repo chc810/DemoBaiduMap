@@ -47,6 +47,8 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	<!-- 拦截器方式配置事物 -->
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
+		
+			<!--默认其他方法都是REQUIRED-->
 			<tx:method name="add*" />
 			<tx:method name="save*" />
 			<tx:method name="update*" />
@@ -58,10 +60,11 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 			<tx:method name="execute" />
 			<tx:method name="create*" />
 
-			<tx:method name="get*" propagation="SUPPORTS" />
-			<tx:method name="find*" propagation="SUPPORTS" />
-			<tx:method name="load*" propagation="SUPPORTS" />
-			<tx:method name="search*" propagation="SUPPORTS" />
+			<tx:method name="get*" read-only="true" propagation="REQUIRED" /> <!--之前是NOT_SUPPORT, 写SUPPORTS会报org.hibernate.HibernateException: No Session found for current thread-->
+			<tx:method name="find*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="load*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="search*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="list*" read-only="true" propagation="REQUIRED"/>
 
 			<tx:method name="*" propagation="SUPPORTS" />
 		</tx:attributes>

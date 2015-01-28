@@ -50,13 +50,20 @@
 		 <dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
-			<version>1.9.0</version>
+			<version>1.9.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.0</version>
+			<version>1.9.13</version>
 		</dependency>
+		
+		<dependency>
+		 <groupId>org.apache.commons</groupId>
+		  <artifactId>commons-lang3</artifactId>
+		  <version>3.1</version>
+		</dependency>
+		
 		
 		<!-- db数据库 -->
 		<!-- h2数据库 -->

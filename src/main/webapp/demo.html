@@ -7,9 +7,6 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<script type="text/javascript" src="jslib/jquery.1.11.2.min.js"></script>
 	<script type="text/javascript" src="jslib/bootstrap.js"></script>
-	
-	<style type="text/css">
-	</style>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=9u6uekZRDNbxVQhS6kNESeLP"></script>
 	<script type="text/javascript" src="jslib/jsUtil.js"></script>
 	<script type="text/javascript" src="jslib/demo.js"></script>
@@ -19,7 +16,7 @@
 	<div style="height:60px;background:#ff2d4b;position:absolute;left:0;right:0;padding:0 50px;">
 			<h2>测试</h2>
 	</div>
-	<div class="container" style="height:600px;">
+	<div class="container" style="height:800px;">
 		<div class="row" style="height:100%;margin-top:70px;">
 			<div class="col-md-2" style="height:100%;background:#fafafa;">
 				<h3 style="border-bottom:1px solid #ccc;padding-bottom:10px;">商铺信息</h3>
@@ -71,14 +68,34 @@
 					    <input type="text" class="form-control" id="street" name="street" placeholder="街道" readonly >
 					  </div>
 					  <input type="hidden" id="streetNumber" name="streetNumber" />
+					  <input type="hidden" id="lng" name="lng" />
+					  <input type="hidden" id="lat" name="lat" />
 					  <button id="saveBtn" type="button" class="btn btn-default">保存</button>
+					  <button type="button" id="testBtn">测试按钮</button>
 					</form>
 				</div>
 			</div>
 			<div class="col-md-10" style="height:100%;">
-				<div id="allmap" style="height:100%;width:100%;"></div>
+				<div id="allmap" style="height:80%;width:100%;"></div>
 			</div>
 		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">通知</h4>
+	      </div>
+	      <div class="modal-body">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 </body>
