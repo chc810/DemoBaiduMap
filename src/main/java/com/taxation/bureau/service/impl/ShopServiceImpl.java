@@ -51,6 +51,19 @@ public class ShopServiceImpl extends BaseService implements ShopServiceI {
 		return shop;
 	}
 	
+	public Shop update(Shop shop) throws ServiceException {
+		logger.debug("进入ShopServiceImpl.update()...");
+		Tshop ts = new Tshop();
+		BeanUtils.copyProperties(shop,ts);
+		try {
+			shopDao.update(ts);
+		} catch (Exception e) {
+			logger.error("修改商铺信息出错",e);
+			throw new ServiceException("修改商铺信息出错");
+		}
+		return shop;
+	}
+	
 	public List<Shop> list(Shop shop) throws ServiceException {
 		logger.debug("进入ShopServiceImpl.list()...");
 		String hql = "from Tshop t where 1=1 ";

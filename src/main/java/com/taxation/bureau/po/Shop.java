@@ -2,7 +2,7 @@ package com.taxation.bureau.po;
 
 public class Shop {
 	
-	private int id;
+	private Integer id;
 	
 	private String lessor;   //出租人
 	private String user;    //使用人
@@ -21,7 +21,7 @@ public class Shop {
 	private String district;     //区
 	private String street;       //街道
 	private String streetNumber;  //街道号码
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	@Override
@@ -34,7 +34,7 @@ public class Shop {
 				+ district + ", street=" + street + ", streetNumber="
 				+ streetNumber + "]";
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getLessor() {

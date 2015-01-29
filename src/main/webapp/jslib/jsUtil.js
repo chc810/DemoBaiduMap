@@ -33,3 +33,14 @@ serializeObject = function(form) {
 	return o;
 };
 
+setForm = function(form,obj) {
+	$.each(form.serializeArray(), function(index) {
+		for (var i in obj) {
+			if (this['name'] == i) {
+				$("#" + i).val(obj[i]);
+				continue;
+			}
+		}
+	});
+}
+

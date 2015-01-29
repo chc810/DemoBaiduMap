@@ -6,25 +6,37 @@ $(function(){
 	map.centerAndZoom(point,15);
 	var geoc = new BMap.Geocoder();    
 	
-	var addMarker = function(marker){
+	
+	var addMarker = function(marker,data){
 		 marker.addEventListener("click",function() {
-			 log("_marker" + _marker);
-			 if (_marker == marker) {
+			 if (_marker === this) {
 				 log("你点击了没有保存的点");
+				 //需要添加
+				 return;
 			 }
-			 
-			var p = marker.getPosition();  //获取marker的位置
+			 //需要获取已经保存的点的详细信息
+			var p = this.getPosition();  //获取marker的位置
 			flag = true;
-			alert("marker的位置是" + p.lng + "," + p.lat); 
+			if (data) {
+				setForm($("#shopForm"),data);
+			}
 		});
 		map.addOverlay(marker);
+		//创建右键菜单
+		var markerMenu=new BMap.ContextMenu();
+		markerMenu.addItem(new BMap.MenuItem('删除',removeMarker.bind(marker)));
+		marker.addContextMenu(markerMenu);
+	}
+	
+	var removeMarker = function(e,ee,marker){
+		map.removeOverlay(marker);
 	}
 
 	//标记位，让修改某个坐标不会触发增加事件
 	var flag = false;
 	
-	//记录当前点击的标记，为了让没有保存的点，在点击其他地方时删除该
-	var _marker;
+	//记录当前点击的标记，为了让没有保存的点，在点击其他地方时删除该点
+	var _marker = null;
 	
 	//地图加载完成
 	map.addEventListener("tilesloaded",function(){
@@ -39,7 +51,7 @@ $(function(){
 					for (var i=0;i<allData.length;i++) {
 						var point = new BMap.Point(allData[i].lng,allData[i].lat);
 						var marker = new BMap.Marker(point);
-						addMarker(marker);
+						addMarker(marker,allData[i]);
 					}
 					return;
 				}
@@ -70,8 +82,8 @@ $(function(){
 			$('#lat').val(pt.lat);
 			
 			var addpoint = new BMap.Point(pt.lng, pt.lat);
-			marker = new BMap.Marker(addpoint);
-			addMarker(marker);
+			_marker = new BMap.Marker(addpoint);
+			addMarker(_marker);
 			log(pt.lng + "," + pt.lat + "," + addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
 		});        
 	});

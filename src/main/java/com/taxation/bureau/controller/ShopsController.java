@@ -35,6 +35,12 @@ public class ShopsController extends BaseController{
 	public AjaxPo addShop(Shop shop,HttpServletRequest request ,HttpServletResponse response) {
 		logger.debug("进入ShopsController.addShop()......参数为:" + shop);
 		AjaxPo ret = new AjaxPo(true, "成功");
+		Integer id = shop.getId();
+		if (id != null) {
+			//修改
+			shopService.update(shop);
+			return ret;
+		}
 		Shop s = null;
 		try {
 			s = shopService.save(shop);

@@ -11,4 +11,6 @@ public interface ShopServiceI {
 	
 	public List<Shop> list(Shop shop) throws ServiceException;
 	
+	public Shop update(Shop shop) throws ServiceException;
+	
 }
