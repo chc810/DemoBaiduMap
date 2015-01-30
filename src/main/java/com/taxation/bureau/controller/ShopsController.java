@@ -71,5 +71,23 @@ public class ShopsController extends BaseController{
 		}
 		return ret;
 	}
+	
+	@RequestMapping(value = "/deleteShop")
+	@ResponseBody
+	public AjaxPo deleteShop(Shop shop,HttpServletRequest request ,HttpServletResponse response) {
+		logger.debug("进入ShopsController.deleteShop()......参数为:" + shop);
+		AjaxPo ret = new AjaxPo(true, "成功");
+		Shop s = null;
+		try {
+			s = shopService.delete(shop);
+			ret.setObj(s);
+		} catch (ServiceException e) {
+			logger.error(e.getMessage());
+			ret.setSuccess(false);
+			ret.setMsg(e.getMessage());
+			return ret;
+		}
+		return ret;
+	}
 
 }

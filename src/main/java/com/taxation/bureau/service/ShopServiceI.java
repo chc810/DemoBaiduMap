@@ -13,4 +13,6 @@ public interface ShopServiceI {
 	
 	public Shop update(Shop shop) throws ServiceException;
 	
+	public Shop delete(Shop shop) throws ServiceException;
+	
 }

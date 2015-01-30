@@ -64,6 +64,19 @@ public class ShopServiceImpl extends BaseService implements ShopServiceI {
 		return shop;
 	}
 	
+	public Shop delete(Shop shop) throws ServiceException {
+		logger.debug("进入ShopServiceImpl.delete()...");
+		Tshop t = new Tshop();
+		t.setId(shop.getId());
+		try {
+			shopDao.delete(t);
+		} catch (Exception e) {
+			logger.error("删除商铺出错",e);
+			throw new ServiceException("删除商铺出错");
+		}
+		return shop;
+	}
+	
 	public List<Shop> list(Shop shop) throws ServiceException {
 		logger.debug("进入ShopServiceImpl.list()...");
 		String hql = "from Tshop t where 1=1 ";

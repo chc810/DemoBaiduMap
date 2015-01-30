@@ -5,78 +5,103 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrapValidator.css" rel="stylesheet">
 	<script type="text/javascript" src="jslib/jquery.1.11.2.min.js"></script>
 	<script type="text/javascript" src="jslib/bootstrap.js"></script>
+	<script type="text/javascript" src="jslib/bootstrapValidator.js"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=9u6uekZRDNbxVQhS6kNESeLP"></script>
 	<script type="text/javascript" src="jslib/jsUtil.js"></script>
 	<script type="text/javascript" src="jslib/demo.js"></script>
 	<title>测试</title>
 </head>
 <body>
-	<div style="height:60px;background:#ff2d4b;position:absolute;left:0;right:0;padding:0 50px;">
+	<div style="height:60px;position:absolute;left:0;right:0;padding:0 50px;text-align:center; border-bottom:1px solid #0098DD;">
 			<h2>测试</h2>
 	</div>
 	<div class="container" style="height:800px;">
 		<div class="row" style="height:100%;margin-top:70px;">
-			<div class="col-md-2" style="height:100%;background:#fafafa;">
+			<div class="col-md-3" style="height:100%;background:#fafafa;">
 				<h3 style="border-bottom:1px solid #ccc;padding-bottom:10px;">商铺信息</h3>
 				<div>
-					<form id="shopForm">
+					<form id="shopForm" class="form-horizontal">
 					  <div class="form-group">
-					    <label class="sr-only" for="shopName">商铺名称</label>
+					    <label class="col-sm-5 control-label" for="shopName">商铺名称</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="shopName" name="shopName" placeholder="商铺名称">
+					     </div>
 					  </div>
 					  <div class="form-group">
-					    <label class="sr-only" for="businessSign">营业牌照</label>
+					    <label class="col-sm-5 control-label" for="businessSign">营业牌照</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="businessSign" name="businessSign" placeholder="营业牌照">
+					     </div>
 					  </div>
 					  <div class="form-group">
-					    <label class="sr-only" for="lessor">出租人</label>
+					    <label class="col-sm-5 control-label" for="lessor">出租人</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="lessor"  name="lessor" placeholder="出租人">
+					     </div>
 					  </div>
 					  <div class="form-group">
-					    <label class="sr-only" for="user">使用人</label>
+					    <label class="col-sm-5 control-label" for="user">使用人</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="user" name="user" placeholder="使用人">
+					     </div>
 					  </div>
 					  <div class="form-group">
-					    <label class="sr-only" for="measure">商铺占用面积</label>
+					    <label class="col-sm-5 control-label" for="measure">商铺占用面积</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="measure" name="measure" placeholder="商铺占用面积">
+					     </div>
 					  </div>
 					   <div class="form-group">
-					    <label class="sr-only" for="taxYear">年应交税额</label>
+					    <label class="col-sm-5 control-label" for="taxYear">年应交税额</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="taxYear" name="taxYear" placeholder="年应交税额">
+					     </div>
 					  </div>
 					   <div class="form-group">
-					    <label class="sr-only" for="taxHasPay">已交税额</label>
+					    <label class="col-sm-5 control-label" for="taxHasPay">已交税额</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="taxHasPay" name="taxHasPay" placeholder="已交税额">
+					     </div>
 					  </div>
 					  <div style="height:1px; border-bottom:1px solid #ccc;margin-bottom:10px;"></div>
 					   <div class="form-group">
-					    <label class="sr-only" for="province">省</label>
+					    <label class="col-sm-5 control-label" for="province">省</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="province" name="province" placeholder="省" readonly >
+					     </div>
 					  </div>
 					   <div class="form-group">
-					    <label class="sr-only" for="city">市</label>
+					    <label class="col-sm-5 control-label" for="city">市</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="city" name="city" placeholder="市" readonly >
+					     </div>
 					  </div>
 					   <div class="form-group">
-					    <label class="sr-only" for="district">县</label>
+					    <label class="col-sm-5 control-label" for="district">县</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="district" name="district" placeholder="县" readonly >
+					     </div>
 					  </div>
 					   <div class="form-group">
-					    <label class="sr-only" for="street">街道</label>
+					    <label class="col-sm-5 control-label" for="street">街道</label>
+					     <div class="col-sm-7">
 					    <input type="text" class="form-control" id="street" name="street" placeholder="街道" readonly >
+					     </div>
 					  </div>
 					  <input type="hidden" id="streetNumber" name="streetNumber" />
 					  <input type="hidden" id="lng" name="lng" />
 					  <input type="hidden" id="lat" name="lat" />
 					  <input type="hidden" id="id" name="id" />
-					  <button id="saveBtn" type="button" class="btn btn-default">保存</button>
-					  <button type="button" id="testBtn">测试按钮</button>
+					  <div style="text-align :center;">
+					  <button id="saveBtn" type="button" class="btn btn-primary" style="width:140px;">保存</button>
+					  </div>
 					</form>
 				</div>
 			</div>
-			<div class="col-md-10" style="height:100%;">
+			<div class="col-md-9" style="height:100%;">
 				<div id="allmap" style="height:80%;width:100%;"></div>
 			</div>
 		</div>

@@ -28,8 +28,30 @@ $(function(){
 		marker.addContextMenu(markerMenu);
 	}
 	
+	//删除标记
 	var removeMarker = function(e,ee,marker){
-		map.removeOverlay(marker);
+		if (marker.shopId) {
+			log("删除已添加的点" + marker.shopId);
+			$.ajax({
+				type : "post",
+				url : basePath + "/shops/shopsController/deleteShop",
+				dataType : "json",
+				data : {id : marker.shopId},
+				success : function(ret) {
+					if (ret.success) {
+						showLog(ret.msg);
+						map.removeOverlay(marker);
+					} else {
+						showLog(ret.msg);
+					}
+					
+				}
+			});
+		} else {
+			log("删除没有添加的点.....");
+			map.removeOverlay(marker);
+		}
+		
 	}
 
 	//标记位，让修改某个坐标不会触发增加事件
@@ -51,6 +73,8 @@ $(function(){
 					for (var i=0;i<allData.length;i++) {
 						var point = new BMap.Point(allData[i].lng,allData[i].lat);
 						var marker = new BMap.Marker(point);
+						//自定义一个id属性
+						marker.shopId = allData[i].id;
 						addMarker(marker,allData[i]);
 					}
 					return;
@@ -111,6 +135,47 @@ $(function(){
 	$("#testBtn").bind("click", function(){
 		$('#myModal').modal("show");
 	});
+	
+	//验证输入内容
+	 $('#shopForm').bootstrapValidator({
+//       live: 'disabled',
+       message: '输入内容有效',
+       feedbackIcons: {
+           valid: 'glyphicon glyphicon-ok',
+           invalid: 'glyphicon glyphicon-remove',
+           validating: 'glyphicon glyphicon-refresh'
+       },
+       fields: {
+    	   shopName: {
+               validators: {
+                   notEmpty: {
+                       message: '商铺名称不能为空'
+                   }
+               }
+           },
+           businessSign: {
+               validators: {
+                   notEmpty: {
+                       message: '营业牌照不能为空'
+                   }
+               }
+           },
+           lessor: {
+               validators: {
+                   notEmpty: {
+                       message: '出租人不能为空'
+                   }
+               }
+           },
+           businessSign: {
+               validators: {
+                   notEmpty: {
+                       message: '营业牌照不能为空'
+                   }
+               }
+           }
+       }
+   });
 	
 });
 
