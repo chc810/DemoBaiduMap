@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tshop")
 public class Tshop {
-	private int id;
+	private Integer id;
 	
 	private String lessor;   //出租人
 	private String user;    //使用人
@@ -34,10 +34,10 @@ public class Tshop {
 	@Id
 	@Column(name = "ID", nullable = false, length = 36)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

@@ -69,7 +69,7 @@ $(function(){
 			data : {},
 			success : function(ret) {
 				if (ret.success) {
-					var allData = ret.obj
+					var allData = ret.obj;
 					for (var i=0;i<allData.length;i++) {
 						var point = new BMap.Point(allData[i].lng,allData[i].lat);
 						var marker = new BMap.Marker(point);
@@ -164,13 +164,6 @@ $(function(){
                validators: {
                    notEmpty: {
                        message: '出租人不能为空'
-                   }
-               }
-           },
-           businessSign: {
-               validators: {
-                   notEmpty: {
-                       message: '营业牌照不能为空'
                    }
                }
            }

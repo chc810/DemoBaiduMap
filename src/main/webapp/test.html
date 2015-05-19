@@ -4,7 +4,21 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="css/bootstrap.css" rel="stylesheet">
-	<script type="text/javascript" src="jslib/008.js"></script>
+	<script type="text/javascript" src="http://202.108.28.30:80/resource/yunda/qn.js"></script>
+	<script type="text/javascript">
+	
+	qn.extend.onload = function(){
+		console.info("加载注册事件...");
+		var fn = function(status, data) {
+			$("h2").text(status);
+			
+			console.info("接受到事件的data。。。。。。。。。" + status);
+			console.info(data);
+		}
+		qn.extend.notifyEventHandler = fn;
+		
+	};
+	</script>
 	<title>测试</title>
 </head>
 <body>
